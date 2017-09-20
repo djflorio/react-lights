@@ -1,0 +1,19 @@
+.light {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-style: none;
+    margin-bottom: -4px;
+    cursor: pointer;
+}
+
+.light--on {
+    background-color: #dddd00;
+    box-shadow: 0 0 15px yellow;
+    border: solid 1px yellow;
+}
+
+.light--off {
+    background-color: #333;
+    border: solid 1px #555;
+}
