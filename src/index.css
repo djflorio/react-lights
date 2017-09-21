@@ -73,13 +73,13 @@ body {
     text-align: center;
     left: 150px;
     right: 0;
-    top: 10%;
+    top: 5%;
     bottom: 0;
 }
 
 .board__message {
     color: #ddd;
-    margin-bottom: 50px;
+    margin-bottom: 5%;
 }
 
 .yellow-bright-text {
