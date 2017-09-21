@@ -4,8 +4,37 @@ import './index.css';
 
 function Light(props) {
     return (
-        <span className={"light " + (props.value ? "light--on" : "light--off")} onClick={props.onClick}></span>
+        <span className={"light " + (props.value ? "light--" + props.color : "light--off")} onClick={props.onClick}></span>
     );
+}
+
+class Panel extends React.Component {
+    render() {
+        return (
+            <div className="panel">
+                <h3 className="panel__title">LIGHTS ON</h3>
+                <p className="panel__subtitle">A "Lights Out" clone by <a className={this.props.color + "-text"} href="http://www.danflorio.com" target="_blank">Dan Florio</a></p>
+                <p>MOVES: {this.props.numMoves}</p>
+                <p>{this.props.gameWon ? "Winner!" : ""}</p>
+                <br/>
+                <p>Color Theme</p>
+                <ul className="panel__color-buttons">
+                    <li className={"panel__color-button " + (this.props.color == "yellow" ? "select--yellow" : "")} onClick={() => this.props.onColorChange("yellow")}>
+                        YELLOW
+                    </li>
+                    <li className={"panel__color-button " + (this.props.color == "green" ? "select--green" : "")}  onClick={() => this.props.onColorChange("green")}>
+                        GREEN
+                    </li>
+                    <li className={"panel__color-button " + (this.props.color == "red" ? "select--red" : "")}  onClick={() => this.props.onColorChange("red")}>
+                        RED
+                    </li>
+                    <li className={"panel__color-button " + (this.props.color == "blue" ? "select--blue" : "")}  onClick={() => this.props.onColorChange("blue")}>
+                        BLUE
+                    </li>
+                </ul>
+            </div>
+        );
+    }
 }
 
 class Board extends React.Component {
@@ -14,12 +43,17 @@ class Board extends React.Component {
         return (
             <Light
                 value={value}
+                color={this.props.color}
                 onClick={() => this.props.onClick(i)}/>
         );
     }
     render() {
         return (
             <div className="board">
+                <p className="board__message">
+                    Clicking a light will flip all adjacent lights.<br/>
+                    Can you turn all of the lights <span className={this.props.color + "-bright-text"}>on</span>?
+                </p>
                 <div className="board-row">
                     {this.renderLight(0)}
                     {this.renderLight(1)}
@@ -71,6 +105,7 @@ class Game extends React.Component {
                 0,1,1,0,0,
                 0,1,1,1,0
             ],
+            color: "yellow",
             numMoves: 0,
             gameWon: false
         }
@@ -105,17 +140,26 @@ class Game extends React.Component {
                 gameWon: true
             });
         }
+    }
 
+    handleColorChange(c) {
+        this.setState({
+            color: c
+        });
     }
 
     render() {
         return (
             <div>
-                <h1>{this.state.numMoves}</h1>
-                <h2>{this.state.gameWon ? "Winner!" : ""}</h2>
+                <Panel
+                    numMoves={this.state.numMoves}
+                    gameWon={this.state.gameWon}
+                    color={this.state.color}
+                    onColorChange={(c) => this.handleColorChange(c)}/>
                 <Board
                     lights={this.state.lights}
-                    onClick={(i) => this.handleClick(i)}/>
+                    onClick={(i) => this.handleClick(i)}
+                    color={this.state.color}/>
             </div>
         );
     }

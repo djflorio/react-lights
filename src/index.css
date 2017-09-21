@@ -1,16 +1,135 @@
+body {
+    background-color: black;
+    font-family: 'Roboto', sans-serif;
+}
+
+.panel {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+    background-color: #3D3D3D;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #ddd;
+    border-right: solid 3px #555;
+    text-align: center;
+}
+
+.panel__title {
+    font-family: 'Arvo', serif;
+    font-size: 30px;
+}
+
+.panel__color-buttons {
+    list-style: none;
+    padding: 0;
+}
+
+.panel__color-button {
+    background-color: #ccc;
+    cursor: pointer;
+    margin-bottom: 5px;
+    padding: 3px;
+    border-radius: 5px;
+    color: #333;
+}
+
+.select--yellow {
+    background-color: #dddd00;
+}
+
+.select--green {
+    background-color: #15C515;
+}
+
+.select--red {
+    background-color: #D11C1C;
+}
+
+.select--blue {
+    background-color: #0772CF;
+}
+
+.yellow-text {
+    color: #dddd00;
+}
+
+.green-text {
+    color: #15C515;
+}
+
+.red-text {
+    color: #D11C1C;
+}
+
+.blue-text {
+    color: #0772CF;
+}
+
+.board {
+    position: fixed;
+    text-align: center;
+    left: 150px;
+    right: 0;
+    top: 10%;
+    bottom: 0;
+}
+
+.board__message {
+    color: #ddd;
+    margin-bottom: 50px;
+}
+
+.yellow-bright-text {
+    color: #dddd00;
+    text-shadow: 0 0 20px white;
+}
+.green-bright-text {
+    color: #15C515;
+    text-shadow: 0 0 20px white;
+}
+.red-bright-text {
+    color: #D11C1C;
+    text-shadow: 0 0 20px white;
+}
+.blue-bright-text {
+    color: #0772CF;
+    text-shadow: 0 0 20px white;
+}
+
 .light {
     display: inline-block;
     width: 40px;
     height: 40px;
     border-style: none;
-    margin-bottom: -4px;
+    margin: 4px;
     cursor: pointer;
 }
 
-.light--on {
+.light--yellow {
     background-color: #dddd00;
     box-shadow: 0 0 15px yellow;
     border: solid 1px yellow;
+}
+
+.light--green {
+    background-color: #15C515;
+    box-shadow: 0 0 15px #00FF00;
+    border: solid 1px #00FF00;
+}
+
+.light--red {
+    background-color: #D11C1C;
+    box-shadow: 0 0 15px red;
+    border: solid 1px red;
+}
+
+.light--blue {
+    background-color: #0772CF;
+    box-shadow: 0 0 15px #00A2FF;
+    border: solid 1px #00A2FF;
 }
 
 .light--off {
